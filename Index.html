@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Referral Form</title>
+<style>
+:root {
+--primary-color: #2c3e50;
+--border-color: #ccc;
+--bg-color: #f9f9f9;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: #eef2f5;
+color: #333;
+margin: 0;
+padding: 20px;
+display: flex;
+justify-content: center;
+}
+
+.form-container {
+background-color: #fff;
+padding: 40px;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+width: 100%;
+max-width: 800px;
+}
+
+h1 {
+text-align: center;
+color: var(--primary-color);
+border-bottom: 2px solid var(--primary-color);
+padding-bottom: 10px;
+margin-bottom: 30px;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.row {
+display: flex;
+gap: 20px;
+}
+
+.row .form-group {
+flex: 1;
+}
+
+label {
+display: block;
+font-weight: 600;
+margin-bottom: 8px;
+color: var(--primary-color);
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+width: 100%;
+padding: 10px;
+border: 1px solid var(--border-color);
+border-radius: 4px;
+font-size: 16px;
+font-family: inherit;
+box-sizing: border-box;
+background-color: var(--bg-color);
+transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+outline: none;
+border-color: var(--primary-color);
+background-color: #fff;
+}
+
+textarea {
+resize: vertical;
+min-height: 80px;
+}
+
+.large-textarea {
+min-height: 120px;
+}
+
+.button-container {
+text-align: center;
+margin-top: 30px;
+}
+
+button {
+background-color: var(--primary-color);
+color: white;
+border: none;
+padding: 12px 24px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+button:hover {
+background-color: #1a252f;
+}
+
+/* Print styling for PDF generation /
+@media print {
+body {
+background-color: white;
+padding: 0;
+}
+.form-container {
+box-shadow: none;
+padding: 0;
+width: 100%;
+max-width: 100%;
+}
+button {
+display: none; / Hides the button in the PDF /
+}
+input[type="text"],
+input[type="number"],
+textarea {
+border: none;
+border-bottom: 1px solid #000;
+background-color: transparent;
+border-radius: 0;
+padding: 4px 0;
+resize: none;
+}
+/ Adjust height for textarea printing so text isn't cut off */
+textarea {
+height: auto;
+overflow: visible;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="form-container">
+<h1>Client Referral Form</h1>
+
+<form id="referralForm">
+<div class="row">
+<div class="form-group" style="flex: 3;">
+<label for="name">Name</label>
+<input type="text" id="name" name="name" placeholder="Enter full name">
+</div>
+<div class="form-group" style="flex: 1;">
+<label for="age">Age</label>
+<input type="number" id="age" name="age" placeholder="Age">
+</div>
+</div>
+
+<div class="form-group">
+<label for="background">Background info if available</label>
+<textarea id="background" name="background" class="large-textarea" placeholder="Enter any relevant background history..."></textarea>
+</div>
+
+<div class="form-group">
+<label for="diagnosis">Diagnosis</label>
+<input type="text" id="diagnosis" name="diagnosis" placeholder="Primary/Secondary diagnoses">
+</div>
+
+<div class="form-group">
+<label for="modality">Treatment Modality Suggested (e.g., CBT, DBT, EMDR, etc.)</label>
+<input type="text" id="modality" name="modality" placeholder="Suggested treatments">
+</div>
+
+<div class="form-group">
+<label for="referredTo">Referred to</label>
+<input type="text" id="referredTo" name="referredTo" placeholder="Name of provider or clinic">
+</div>
+
+<div class="form-group">
+<label for="medication">Medication</label>
+<textarea id="medication" name="medication" placeholder="Current medications and dosages..."></textarea>
+</div>
+
+<div class="form-group">
+<label for="notes">Notes</label>
+<textarea id="notes" name="notes" class="large-textarea" placeholder="Additional notes or considerations..."></textarea>
+</div>
+
+<div class="button-container">
+<button type="button" onclick="window.print()">Save as PDF / Print</button>
+</div>
+</form>
+</div>
+
+</body>
+</html>
