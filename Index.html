@@ -3,198 +3,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Client Referral Form</title>
+<title>Clinic Intake Form</title>
 <style>
-:root {
---primary-color: #2c3e50;
---border-color: #ccc;
---bg-color: #f9f9f9;
-}
-
 body {
 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background-color: #eef2f5;
+background-color: #f4f7f6;
 color: #333;
-margin: 0;
+line-height: 1.6;
 padding: 20px;
-display: flex;
-justify-content: center;
 }
-
-.form-container {
-background-color: #fff;
-padding: 40px;
+.container {
+max-width: 900px;
+margin: 0 auto;
+background: #fff;
+padding: 30px;
 border-radius: 8px;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-width: 100%;
-max-width: 800px;
+box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 h1 {
 text-align: center;
-color: var(--primary-color);
-border-bottom: 2px solid var(--primary-color);
+color: #2c3e50;
+border-bottom: 2px solid #3498db;
 padding-bottom: 10px;
-margin-bottom: 30px;
 }
-
+h2 {
+color: #2980b9;
+margin-top: 30px;
+border-bottom: 1px solid #eee;
+padding-bottom: 5px;
+}
 .form-group {
-margin-bottom: 20px;
+margin-bottom: 15px;
 }
-
-.row {
-display: flex;
-gap: 20px;
-}
-
-.row .form-group {
-flex: 1;
-}
-
 label {
 display: block;
-font-weight: 600;
-margin-bottom: 8px;
-color: var(--primary-color);
+font-weight: bold;
+margin-bottom: 5px;
+color: #555;
 }
-
-input[type="text"],
-input[type="number"],
-textarea {
+input[type="text"], input[type="number"], textarea {
 width: 100%;
 padding: 10px;
-border: 1px solid var(--border-color);
+border: 1px solid #ccc;
 border-radius: 4px;
-font-size: 16px;
-font-family: inherit;
 box-sizing: border-box;
-background-color: var(--bg-color);
-transition: border-color 0.3s;
+font-family: inherit;
 }
-
-input[type="text"]:focus,
-input[type="number"]:focus,
-textarea:focus {
-outline: none;
-border-color: var(--primary-color);
-background-color: #fff;
-}
-
 textarea {
 resize: vertical;
-min-height: 80px;
+height: 80px;
 }
-
-.large-textarea {
-min-height: 120px;
+.grid-2 {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
 }
-
-.button-container {
-text-align: center;
-margin-top: 30px;
+.dynamic-section {
+background: #f9f9f9;
+padding: 15px;
+border: 1px dashed #bbb;
+margin-bottom: 15px;
+border-radius: 5px;
 }
-
-button {
-background-color: var(--primary-color);
+.add-btn {
+background-color: #27ae60;
 color: white;
 border: none;
-padding: 12px 24px;
-font-size: 16px;
-font-weight: bold;
-border-radius: 4px;
+padding: 10px 15px;
 cursor: pointer;
-transition: background-color 0.3s;
+border-radius: 4px;
+font-size: 14px;
+margin-bottom: 20px;
 }
-
-button:hover {
-background-color: #1a252f;
+.add-btn:hover {
+background-color: #2ecc71;
 }
-
-/* Print styling for PDF generation /
-@media print {
-body {
-background-color: white;
-padding: 0;
-}
-.form-container {
-box-shadow: none;
-padding: 0;
-width: 100%;
-max-width: 100%;
-}
-button {
-display: none; / Hides the button in the PDF /
-}
-input[type="text"],
-input[type="number"],
-textarea {
+.print-btn {
+background-color: #34495e;
+color: white;
 border: none;
-border-bottom: 1px solid #000;
-background-color: transparent;
-border-radius: 0;
-padding: 4px 0;
-resize: none;
+padding: 12px 20px;
+cursor: pointer;
+border-radius: 4px;
+font-size: 16px;
+display: block;
+width: 100%;
+margin-bottom: 20px;
 }
-/ Adjust height for textarea printing so text isn't cut off */
-textarea {
-height: auto;
-overflow: visible;
+.print-btn:hover {
+background-color: #2c3e50;
 }
+@media print {
+body { background: white; }
+.container { box-shadow: none; padding: 0; }
+.add-btn, .print-btn { display: none; }
+input, textarea { border: none; border-bottom: 1px solid #000; border-radius: 0; padding: 5px 0; }
+.dynamic-section { border: none; padding: 0; background: transparent; }
 }
 </style>
 </head>
 <body>
 
-<div class="form-container">
-<h1>Client Referral Form</h1>
+<div class="container">
+<button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
 
-<form id="referralForm">
-<div class="row">
-<div class="form-group" style="flex: 3;">
-<label for="name">Name</label>
-<input type="text" id="name" name="name" placeholder="Enter full name">
-</div>
-<div class="form-group" style="flex: 1;">
-<label for="age">Age</label>
-<input type="number" id="age" name="age" placeholder="Age">
-</div>
+<h1>Clinic Intake Form</h1>
+
+<h2>Personal Information</h2>
+<div class="grid-2">
+<div class="form-group"><label>Name:</label><input type="text"></div>
+<div class="form-group"><label>Age:</label><input type="text"></div>
+<div class="form-group"><label>Education:</label><input type="text"></div>
+<div class="form-group"><label>Work:</label><input type="text"></div>
+<div class="form-group"><label>Residence:</label><input type="text"></div>
+<div class="form-group"><label>Company at home:</label><input type="text"></div>
+<div class="form-group"><label>Dominant hand:</label><input type="text"></div>
+<div class="form-group"><label>Religion:</label><input type="text"></div>
+<div class="form-group"><label>Nationality:</label><input type="text"></div>
+<div class="form-group"><label>Siblings (general mention):</label><input type="text"></div>
 </div>
 
+<h2>Marital Status & Spouse Details</h2>
+<div class="form-group"><label>Marital status:</label><input type="text"></div>
+<div class="grid-2">
+<div class="form-group"><label>Husband's Name:</label><input type="text"></div>
+<div class="form-group"><label>Husband's Age:</label><input type="text"></div>
+<div class="form-group"><label>Husband's Education:</label><input type="text"></div>
+<div class="form-group"><label>Husband's Work:</label><input type="text"></div>
+<div class="form-group"><label>When met:</label><input type="text"></div>
+<div class="form-group"><label>How long dating:</label><input type="text"></div>
+<div class="form-group"><label>Engagement length:</label><input type="text"></div>
+<div class="form-group"><label>Marriage years:</label><input type="text"></div>
+</div>
+<div class="form-group"><label>Relation (describes relationship quality/type):</label><textarea></textarea></div>
+
+<h2>Children Details</h2>
+<div id="children-container">
+<div class="dynamic-section child-entry">
+<div class="grid-2">
+<div class="form-group"><label>Child Name:</label><input type="text"></div>
+<div class="form-group"><label>Age:</label><input type="text"></div>
+<div class="form-group"><label>Education:</label><input type="text"></div>
+<div class="form-group"><label>Work:</label><input type="text"></div>
+<div class="form-group"><label>Marital status & kids:</label><input type="text"></div>
+<div class="form-group"><label>Relation (to subject):</label><input type="text"></div>
+</div>
+</div>
+</div>
+<button class="add-btn" type="button" onclick="addSection('children-container', 'child-entry')">+ Add Another Child</button>
+
+<h2>Special Habits & Substance Use</h2>
+<div class="form-group"><label>Special habits details (If yes):</label><textarea></textarea></div>
+<div id="drugs-container">
+<div class="dynamic-section drug-entry">
+<div class="grid-2">
+<div class="form-group"><label>What (substance):</label><input type="text"></div>
+<div class="form-group"><label>1st time (of use):</label><input type="text"></div>
+<div class="form-group"><label>Max (quantity/frequency):</label><input type="text"></div>
+<div class="form-group"><label>SE (Side Effects):</label><input type="text"></div>
+<div class="form-group"><label>Daily (use frequency):</label><input type="text"></div>
+<div class="form-group"><label>Social (use context):</label><input type="text"></div>
+<div class="form-group"><label>Occasional (use frequency):</label><input type="text"></div>
+</div>
+</div>
+</div>
+<button class="add-btn" type="button" onclick="addSection('drugs-container', 'drug-entry')">+ Add Another Drug</button>
+
+<h2>Medical & Safety Information</h2>
+<div class="form-group"><label>Medical conditions:</label><textarea></textarea></div>
+<div class="form-group"><label>Surgeries:</label><textarea></textarea></div>
+<div class="form-group"><label>Sensitivity:</label><input type="text"></div>
+<div class="form-group"><label>Accidents (ICU or blood transfusion):</label><input type="text"></div>
+<div class="form-group"><label>Harm to self or others (If yes):</label><input type="text"></div>
+
+<h3>Attempts (Harm to self/others)</h3>
+<div id="attempts-container">
+<div class="dynamic-section attempt-entry">
+<div class="grid-2">
+<div class="form-group"><label>When:</label><input type="text"></div>
+<div class="form-group"><label>Plan:</label><input type="text"></div>
+<div class="form-group"><label>Consequences:</label><input type="text"></div>
+<div class="form-group"><label>Triggers:</label><input type="text"></div>
+</div>
+</div>
+</div>
+<button class="add-btn" type="button" onclick="addSection('attempts-container', 'attempt-entry')">+ Add Another Attempt</button>
+
+<h2>Family History (Psychiatric, Neurological, Developmental, Addiction)</h2>
+<div id="family-container">
+<div class="dynamic-section family-entry">
+<div class="grid-2">
+<div class="form-group"><label>Who (relation):</label><input type="text"></div>
+<div class="form-group"><label>Where (treated):</label><input type="text"></div>
+<div class="form-group"><label>What (condition/diagnosis):</label><input type="text"></div>
+<div class="form-group"><label>Admissions (history of):</label><input type="text"></div>
+<div class="form-group"><label>Medication (history of):</label><input type="text"></div>
+<div class="form-group"><label>Marital status:</label><input type="text"></div>
+<div class="form-group"><label>Work status:</label><input type="text"></div>
+</div>
+</div>
+</div>
+<button class="add-btn" type="button" onclick="addSection('family-container', 'family-entry')">+ Add Another Family Member</button>
+
+<h2>Parents Details</h2>
+<h3>Father</h3>
+<div class="grid-2">
+<div class="form-group"><label>Name:</label><input type="text"></div>
+<div class="form-group"><label>Age:</label><input type="text"></div>
+<div class="form-group"><label>Education:</label><input type="text"></div>
+<div class="form-group"><label>Work:</label><input type="text"></div>
+<div class="form-group"><label>Relation (to subject):</label><input type="text"></div>
+<div class="form-group"><label>Consanguinity (between parents):</label><input type="text"></div>
+</div>
+<div class="form-group"><label>How parents met:</label><input type="text"></div>
+<div class="form-group"><label>Domestic physical/verbal violence (between parents):</label><textarea></textarea></div>
+
+<h3>Mother</h3>
+<div class="grid-2">
+<div class="form-group"><label>Name:</label><input type="text"></div>
+<div class="form-group"><label>Age:</label><input type="text"></div>
+<div class="form-group"><label>Education:</label><input type="text"></div>
+<div class="form-group"><label>Work:</label><input type="text"></div>
+<div class="form-group"><label>Relation (to subject):</label><input type="text"></div>
+</div>
+
+<h2>Subject's Siblings Details</h2>
+<div id="siblings-container">
+<div class="dynamic-section sibling-entry">
+<div class="grid-2">
+<div class="form-group"><label>Sibling Name:</label><input type="text"></div>
+<div class="form-group"><label>Age:</label><input type="text"></div>
+<div class="form-group"><label>Education:</label><input type="text"></div>
+<div class="form-group"><label>Work:</label><input type="text"></div>
+<div class="form-group"><label>Marital status:</label><input type="text"></div>
+<div class="form-group"><label>Relation (to subject):</label><input type="text"></div>
+</div>
+</div>
+</div>
+<button class="add-btn" type="button" onclick="addSection('siblings-container', 'sibling-entry')">+ Add Another Sibling</button>
+
+<h2>Personal Psychiatry History</h2>
+<div id="providers-container">
+<div class="dynamic-section provider-entry">
+<div class="grid-2">
+<div class="form-group"><label>Provider Name:</label><input type="text"></div>
+<div class="form-group"><label>When (treatment started):</label><input type="text"></div>
+<div class="form-group"><label>Why (reason for treatment):</label><input type="text"></div>
+<div class="form-group"><label>How long (duration):</label><input type="text"></div>
+<div class="form-group"><label>Progress (achieved):</label><input type="text"></div>
+<div class="form-group"><label>Why left:</label><input type="text"></div>
+</div>
+</div>
+</div>
+<button class="add-btn" type="button" onclick="addSection('providers-container', 'provider-entry')">+ Add Another Provider</button>
+
+<div class="grid-2">
+<div class="form-group"><label>Referral source:</label><input type="text"></div>
+<div class="form-group"><label>Psychiatry Medication (current/past):</label><input type="text"></div>
+<div class="form-group"><label>Admissions (hospitalization history):</label><input type="text"></div>
+<div class="form-group"><label>ECT (Electroconvulsive Therapy):</label><input type="text"></div>
+<div class="form-group"><label>Sleep (patterns/issues):</label><input type="text"></div>
+<div class="form-group"><label>Appetite (patterns/issues):</label><input type="text"></div>
+<div class="form-group"><label>PF (Psychotic Features):</label><input type="text"></div>
+<div class="form-group"><label>Self care (abilities/issues):</label><input type="text"></div>
+<div class="form-group"><label>Aggressive physical or verbal (behaviors):</label><input type="text"></div>
+</div>
+
+<h2>Current Complaint</h2>
 <div class="form-group">
-<label for="background">Background info if available</label>
-<textarea id="background" name="background" class="large-textarea" placeholder="Enter any relevant background history..."></textarea>
+<textarea placeholder="Describe the current complaint here..."></textarea>
 </div>
 
-<div class="form-group">
-<label for="diagnosis">Diagnosis</label>
-<input type="text" id="diagnosis" name="diagnosis" placeholder="Primary/Secondary diagnoses">
 </div>
 
-<div class="form-group">
-<label for="modality">Treatment Modality Suggested (e.g., CBT, DBT, EMDR, etc.)</label>
-<input type="text" id="modality" name="modality" placeholder="Suggested treatments">
-</div>
+<script>
+// Function to duplicate dynamic sections and clear their inputs
+function addSection(containerId, entryClass) {
+const container = document.getElementById(containerId);
+const entries = container.getElementsByClassName(entryClass);
+// Clone the first entry to ensure we always have a clean template
+const newEntry = entries[0].cloneNode(true);
 
-<div class="form-group">
-<label for="referredTo">Referred to</label>
-<input type="text" id="referredTo" name="referredTo" placeholder="Name of provider or clinic">
-</div>
+// Clear all input values in the cloned element
+const inputs = newEntry.querySelectorAll('input, textarea');
+inputs.forEach(input => input.value = '');
 
-<div class="form-group">
-<label for="medication">Medication</label>
-<textarea id="medication" name="medication" placeholder="Current medications and dosages..."></textarea>
-</div>
-
-<div class="form-group">
-<label for="notes">Notes</label>
-<textarea id="notes" name="notes" class="large-textarea" placeholder="Additional notes or considerations..."></textarea>
-</div>
-
-<div class="button-container">
-<button type="button" onclick="window.print()">Save as PDF / Print</button>
-</div>
-</form>
-</div>
+// Append to the container
+container.appendChild(newEntry);
+}
+</script>
 
 </body>
 </html>
